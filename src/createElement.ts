@@ -1,7 +1,5 @@
-export function createElement(type:string,props:{},...children:string[]){
+export function createElement(type: string, props: {}, ...children: string[]) {
+  const safeProps = props || {};
 
-    const safeProps = props || {}
-
-
-    return {type:type,props:{...safeProps,children}}
+  return { type: type, props: { ...safeProps, children } };
 }
