@@ -4,6 +4,7 @@ import viteLogo from './assets/vite.svg';
 import heroImg from './assets/hero.png';
 import { setupCounter } from './counter.ts';
 import { createElement } from './createElement.ts';
+import { render } from './render.ts';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <section id="center">
@@ -60,4 +61,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
 setupCounter(document.querySelector<HTMLButtonElement>('#counter')!);
 
-console.log(createElement('div', null, 'a', 'b', 'c'));
+const tree = createElement(
+  'div',
+  { id: 'app-root' },
+  createElement('h1', {}, '제목'),
+  createElement('p', {}, '내용'),
+);
+render(tree, document.querySelector('#app')!);
